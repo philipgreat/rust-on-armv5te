@@ -33,3 +33,4 @@ file target/armv5te-unknown-linux-gnueabi-osatomic/debug/armv5te_demo
 xargo build --release
 file target/armv5te-unknown-linux-gnueabi-osatomic/release/armv5te_demo
 ```
+4g_server: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.3, for GNU/Linux 2.6.16, stripped
