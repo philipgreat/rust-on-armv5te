@@ -1,6 +1,0 @@
-[target.armv5te-unknown-linux-musleabi]
-linker = "arm-linux-gcc"
-rustflags = ["-C", "target-feature=+crt-static"]
-
-[build]
-target = "armv5te-unknown-linux-musleabi"
