@@ -1,6 +1,5 @@
 
 extern crate serialport;
-use serialport::SerialPort;
 
 fn main() {
     // Open the serial port.
