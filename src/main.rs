@@ -4,7 +4,7 @@ use serialport::SerialPort;
 
 fn main() {
     // Open the serial port.
-    let mut port = SerialPort::open("/dev/usb0", 115200).unwrap();
+    let mut port = <dyn SerialPort>::open("/dev/usb0", 115200).unwrap();
 
     // Create a buffer to store the incoming data.
     let mut buffer = [0; 128];
