@@ -5,8 +5,8 @@ authors = ["Philip Z <philip_chang@163.com>"]
 
 
 [dependencies]
-rocket = "0.4.11"
 
+serialport = "0.24.0"
 
 
 [profile.release]
