@@ -7,3 +7,4 @@ export HOST=x86_64-unknown-linux-gnu
 export CC_armv5te_unknown_linux_gnueabi=arm-linux-gcc
 export LD_armv5te_unknown_linux_gnueabi=arm-linux-ld
 export CFLAGS_armv5te_unknown_linux_gnueabi="-Wall -Os -fPIC -D__arm__ -mfloat-abi=soft"
+export PATH=~/gcc-armv5-chain/bin:$PATH
