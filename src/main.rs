@@ -1,3 +1,5 @@
+
+extern crate serialport;
 use serialport::SerialPort;
 
 fn main() {
