@@ -3,7 +3,11 @@ name = "armv5te_demo"
 version = "0.1.0"
 authors = ["Philip Z <philip_chang@163.com>"]
 
+
 [dependencies]
+rocket = "0.4.11"
+
+
 
 [profile.release]
 panic = "abort"

@@ -1,12 +1,12 @@
-use std::{thread, time};
+#![feature(proc_macro_hygiene, decl_macro)]
+
+#[macro_use] extern crate rocket;
+
+#[get("/<name>/<age>")]
+fn hello(name: String, age: u8) -> String {
+    format!("Hello, {} year old named {}!", age, name)
+}
 
 fn main() {
-    // Create a Duration of 20 seconds.
-    let twenty_seconds = time::Duration::from_secs(20);
-
-    // Put the current thread to sleep for 20 seconds.
-    thread::sleep(twenty_seconds);
-
-    // Print a message to the console.
-    println!("Slept for 20 seconds!");
+    rocket::ignite().mount("/hello", routes![hello]).launch();
 }
