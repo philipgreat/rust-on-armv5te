@@ -1,41 +1,32 @@
-extern crate serialport;
-
-use serialport::SerialPort;
-
-fn main() {
-    // Open the serial port.
-    let mut port = SerialPort::open("/dev/usb0", 115200).unwrap();
-
-    // Create a buffer to store the incoming data.
-    let mut buffer = [0; 128];
-
-    // Read data from the serial port.
-    let bytes_read = port.read(&mut buffer).unwrap();
-
-    // Print the incoming data to the console.
-    println!("Received {} bytes: {}", bytes_read, String::from_utf8_lossy(&buffer[..bytes_read]));
-}
-
-
-
-
-
-
-
-/*
-#![feature(proc_macro_hygiene, decl_macro)]
-
-#[macro_use] extern crate rocket;
-
-#[get("/<name>/<age>")]
-fn hello(name: String, age: u8) -> String {
-    format!("Hello, {} year old named {}!", age, name)
-}
+use serialport::prelude::*;
+use std::io::Read;
+use std::time::Duration;
 
 fn main() {
-    
-    rocket::ignite().mount("/hello", routes![hello]).launch();
+    let port_name = "/dev/usb0";
+    let s = SerialPortSettings {
+        baud_rate: 9600,
+        data_bits: DataBits::Eight,
+        flow_control: FlowControl::None,
+        parity: Parity::None,
+        stop_bits: StopBits::One,
+        timeout: Duration::from_millis(10),
+    };
+
+    let mut port = serialport::open_with_settings(&port_name, &s).unwrap();
+
+    let mut serial_buf: Vec<u8> = vec![0; 1000];
+    println!("Receiving data...");
+
+    loop {
+        match port.read(serial_buf.as_mut_slice()) {
+            Ok(t) => {
+                for byte in serial_buf.iter().take(t) {
+                    print!("{}", *byte as char);
+                }
+            }
+            Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
+            Err(e) => eprintln!("{:?}", e),
+        }
+    }
 }
-
-
-*/
