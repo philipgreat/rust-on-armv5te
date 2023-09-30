@@ -1,4 +1,4 @@
-
+extern crate serialport;
 
 use serialport::SerialPort;
 
