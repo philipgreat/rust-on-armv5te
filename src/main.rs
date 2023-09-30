@@ -1,5 +1,4 @@
 
-extern crate serialport;
 
 fn main() {
     // Open the serial port.
